@@ -1,12 +1,26 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
+  <ul >
+    <li v-for="(item, index) in pages" :key="index">
+      <router-link :to="item.path">{{item.title}}</router-link>
+    </li>
+  </ul>
   <router-view></router-view>
 </template>
+
+<script setup lang="ts">
+  import { ref } from 'vue'
+  const pages = ref([
+    {
+      title: 'Home',
+      path: '/'
+    },
+    {
+      title: 'About',
+      path: '/about'
+    }
+  ])
+</script>
+
 
 <style>
 #app {
